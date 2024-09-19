@@ -21,21 +21,17 @@
 
     </div>
     <script type="text/babel">
-
-        let coolDude = "😎";
-        let alien = "👽";
-        let constructionWorker = "👷‍♂️";
-        let man = "🧍‍♂️";
-        let name = "Hadi"
+      function Header(props) {
+        return (
+          <header>
+            <h1>
+              {props.string}'s Kitchen
+            </h1>
+          </header>
+        )
+      }
         ReactDOM.render(
-                          <ul>
-                            <li> {coolDude} </li>
-                            <li> {alien} </li>
-                            <li> {constructionWorker} </li>
-                            <li> {man} </li>
-                            <li> {name.toUpperCase()} </li>
-                            <li> {name.length} </li>
-                            </ul>,
+                          <Header string="Hadi"/>,
                           document.getElementById("root")
           );
 
