@@ -30,8 +30,20 @@
           </header>
         )
       }
+      function Main() {
+        return (
+          <section>
+            <p>
+                We serve the best food
+            </p>
+            </section>
+        )
+      }
         ReactDOM.render(
-                          <Header string="Hadi"/>,
+                          <div>
+                          <Header string="Hadi"/>
+                          <Main/>
+                          </div>,
                           document.getElementById("root")
           );
 
