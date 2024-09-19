@@ -38,7 +38,7 @@
             </p>
 
             <ul>
-                {pizzas.map((pizza) => <li>{pizza}</li>)}
+                {props.pizzas.map((pizza) => <li key={pizza.id}>{pizza.title}</li>)}
               </ul>
             </section>
         )
@@ -62,11 +62,17 @@
         "Shrimp",
       ];
 
+      const pizzaObjects = pizzas.map(
+        (pizza, index) => ({
+        id: index,
+        title: pizza
+      }));
+
       function App() {
         return (
           <div>
             <Header name="Hadi" />
-            <Main food="PIZZA" />
+            <Main food="PIZZA" pizzas={pizzaObjects} />
             <Footer year={new Date().getFullYear()} />
             </div>
         )
