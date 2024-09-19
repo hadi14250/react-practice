@@ -30,11 +30,11 @@
           </header>
         )
       }
-      function Main() {
+      function Main(props) {
         return (
           <section>
             <p>
-                We serve the best food
+                We serve the best {props.food}
             </p>
             </section>
         )
@@ -50,7 +50,7 @@
         ReactDOM.render(
                           <div>
                           <Header string="Hadi"/>
-                          <Main/>
+                          <Main food="Pizza" />
                           </div>,
                           document.getElementById("root")
           );
