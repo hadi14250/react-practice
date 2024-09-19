@@ -34,8 +34,12 @@
         return (
           <section>
             <p>
-                We serve the best {props.food.toLowerCase()} arround.
+                We serve the best {props.food.toLowerCase()} arround:
             </p>
+
+            <ul>
+                {pizzas.map((pizza) => <li>{pizza}</li>)}
+              </ul>
             </section>
         )
       }
@@ -50,6 +54,13 @@
             </ footer>
         )
       }
+
+      const pizzas = [
+        "Margareta",
+        "Pepperoni",
+        "Pieapple",
+        "Shrimp",
+      ];
 
       function App() {
         return (
