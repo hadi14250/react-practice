@@ -25,7 +25,7 @@
         return (
           <header>
             <h1>
-              {props.string}'s Kitchen
+              {props.name}'s Kitchen
             </h1>
           </header>
         )
@@ -34,24 +34,34 @@
         return (
           <section>
             <p>
-                We serve the best {props.food}
+                We serve the best {props.food.toLowerCase()} arround.
             </p>
             </section>
         )
       }
+
+      function Footer(props)
+      {
+        return (
+          <footer>
+            <p>
+              Copyright {props.year}
+              </p>
+            </ footer>
+        )
+      }
+
       function App() {
         return (
           <div>
-            <Header />
-            <Main />
+            <Header name="Hadi" />
+            <Main food="PIZZA" />
+            <Footer year={new Date().getFullYear()} />
             </div>
         )
       }
         ReactDOM.render(
-                          <div>
-                          <Header string="Hadi"/>
-                          <Main food="Pizza" />
-                          </div>,
+                          <App />,
                           document.getElementById("root")
           );
 
