@@ -38,6 +38,7 @@ function App() {
   useEffect(
     () => {
       setLoading(true);
+
       fetch(
         `https://api.github.com/users/${userName}`
         ).then((response) => {
@@ -49,9 +50,9 @@ function App() {
               setError // .catch function will automatically pass the error as a first argument to setError
             );
         }
-        , [loading]
+        ,
         );
-  }
+  }, []
   )
 
   if (loading) return(<h1>Loading...</h1>);
