@@ -1,23 +1,13 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useReducer } from 'react';
 
 function App() {
   const [emotion, setEmotion] = useState("Happy");
   const [secondEmotion, setSecondEmotion] = useState("Tired");
   const [buttonName, setButtonName] = useState("Change To Sad");
   const [secondButtonName, setSecondButtonName] = useState("Change To Grateful");
-  useEffect(
-    () => {
-      console.log(`It's ${emotion} right now`);
-    }, [emotion]
-  )
 
-  useEffect(
-    () => {
-      console.log(`It's second emotion is ${secondEmotion}`);
-    },
-    [secondEmotion, emotion]
-  )
+  const [checked, setChecked] = useReducer((checked) => !checked, false);
 
   return (
     <div className="App">
@@ -58,6 +48,17 @@ function App() {
         }>
           {secondButtonName}
         </button>
+
+        <br></br>
+        <br></br>
+
+        <input type='checkbox' value={checked} onChange={ setChecked }>
+        </input>
+        <label>
+          {
+            checked ? "checked" : "not checked"
+          }
+        </label>
 
     </div>
   );
