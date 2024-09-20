@@ -1,64 +1,53 @@
 import './App.css';
-import { useState, useReducer } from 'react';
+import { useRef } from 'react';
 
 function App() {
-  const [emotion, setEmotion] = useState("Happy");
-  const [secondEmotion, setSecondEmotion] = useState("Tired");
-  const [buttonName, setButtonName] = useState("Change To Sad");
-  const [secondButtonName, setSecondButtonName] = useState("Change To Grateful");
 
-  const [checked, setChecked] = useReducer((checked) => !checked, false);
+  const txtTitle = useRef();
+  const hexColor = useRef();
+
+  const submit = (e) => {
+    
+    e.preventDefault();
+
+    const title = txtTitle.current.value;
+    const color = hexColor.current.value;
+    alert(`${title}, ${color}`);
+
+    txtTitle.current.value = "";
+    hexColor.current.value = "";
+
+  }
+
+  console.log(txtTitle, " ", hexColor);
 
   return (
     <div className="App">
-        <h1>
-          Current Emotion is {emotion}
-        </h1>
 
-        <button onClick={
-          () => {
-            if (emotion === "Happy")
-              setEmotion("Sad");
-            else
-              setEmotion("Happy");
-            
-            if (buttonName === "Change To Sad")
-              setButtonName("Change To Happy");
-            else
-              setButtonName("Change To Sad");
-          }
-        }>
-          { buttonName }
-        </button>
+    <form onSubmit={
+      submit
+    }>
 
-        <h2>
-          Current Second Emotion is {secondEmotion}
-        </h2>
-        <button onClick={
-          () => {
-            if(secondEmotion === "Grateful")
-              setSecondEmotion("Tired");
-            else
-              setSecondEmotion("Grateful");
-            if(secondButtonName === "Change To Grateful")
-              setSecondButtonName("Change To Tired");
-            else
-              setSecondButtonName("Change To Grateful");
-          }
-        }>
-          {secondButtonName}
-        </button>
+      <input 
+      type='text'
+      placeholder='color title...'
+      ref={txtTitle}
+      >
+      
+      </input>
 
-        <br></br>
-        <br></br>
+      <input
+      type='color'
+      ref={hexColor}
+      >
 
-        <input type='checkbox' value={checked} onChange={ setChecked }>
-        </input>
-        <label>
-          {
-            checked ? "checked" : "not checked"
-          }
-        </label>
+      </input>
+
+      <button>
+        ADD
+      </button>
+
+    </form>
 
     </div>
   );
