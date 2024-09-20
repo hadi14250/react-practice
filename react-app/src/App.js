@@ -1,63 +1,35 @@
 import './App.css';
-import { useState } from 'react';
-
-function useInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
-  return [
-    { 
-      value,
-      onChange: (e) => setValue(e.target.value) 
-    },
-    () => setValue(initialValue)
-  ]
-}
+import { useState, useEffect } from 'react';
 
 function App() {
-  
-  const [titleProps, resetTitle] = useInput("");
-  const [colorProps, resetColor] = useInput("#000000");
 
-  const submit = (e) => {
+    const userName = "hadi14250"
 
-    
-    e.preventDefault();
-
-    alert(`${titleProps.value}, ${colorProps.value}`);
-    resetTitle();
-    resetColor();
-
+  const [data, setData] = useState(null);
+  useEffect(
+    () => {
+      fetch(
+        `https://api.github.com/users/${userName}`
+        ).then((response) => {
+            response.json().then(setData);
+        }
+        , []
+        );
   }
+  )
+    if (data)
+      return (
+        <pre>
+          {JSON.stringify(data, null, 2)}
+        </pre>
+      )
 
   return (
     <div className="App">
 
-    <form onSubmit={
-      submit
-    }>
-
-      <input
-      {...titleProps}
-
-      type='text'
-      placeholder='color title...'
-      >
-      
-      </input>
-
-      <input
-
-      {...colorProps}
-
-      type='color'
-      >
-
-      </input>
-
-      <button>
-        ADD
-      </button>
-
-    </form>
+    <h1>
+      Data
+    </h1>
 
     </div>
   );
