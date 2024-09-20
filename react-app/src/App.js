@@ -1,9 +1,24 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [emotion, setEmotion] = useState("Happy");
+  const [secondEmotion, setSecondEmotion] = useState("Tired");
   const [buttonName, setButtonName] = useState("Change To Sad");
+  const [secondButtonName, setSecondButtonName] = useState("Change To Grateful");
+  useEffect(
+    () => {
+      console.log(`It's ${emotion} right now`);
+    }, [emotion]
+  )
+
+  useEffect(
+    () => {
+      console.log(`It's second emotion is ${secondEmotion}`);
+    },
+    [secondEmotion, emotion]
+  )
+
   return (
     <div className="App">
         <h1>
@@ -23,7 +38,25 @@ function App() {
               setButtonName("Change To Sad");
           }
         }>
-          {buttonName}
+          { buttonName }
+        </button>
+
+        <h2>
+          Current Second Emotion is {secondEmotion}
+        </h2>
+        <button onClick={
+          () => {
+            if(secondEmotion === "Grateful")
+              setSecondEmotion("Tired");
+            else
+              setSecondEmotion("Grateful");
+            if(secondButtonName === "Change To Grateful")
+              setSecondButtonName("Change To Tired");
+            else
+              setSecondButtonName("Change To Grateful");
+          }
+        }>
+          {secondButtonName}
         </button>
 
     </div>
