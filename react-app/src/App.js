@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function App() {
   const [emotion, setEmotion] = useState("Happy");
-  let [buttonName, setButtonName] = useState("Sad");
+  const [buttonName, setButtonName] = useState("Change To Sad");
   return (
     <div className="App">
         <h1>
@@ -12,18 +12,20 @@ function App() {
 
         <button onClick={
           () => {
-            if (buttonName === "Sad")
-              setButtonName("Happy");
-            else
-              setButtonName("Sad");
             if (emotion === "Happy")
               setEmotion("Sad");
             else
               setEmotion("Happy");
+            
+            if (buttonName === "Change To Sad")
+              setButtonName("Change To Happy");
+            else
+              setButtonName("Change To Sad");
           }
-          } >
+        }>
           {buttonName}
         </button>
+
     </div>
   );
 }
