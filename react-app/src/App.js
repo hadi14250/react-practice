@@ -1,42 +1,38 @@
 import './App.css';
 
-const tahoe_peaks = [
-  { name: "Feel", elevaion: 10891},
-  { name: "Monument Peak", elevaion: 10067},
-  { name: "Pyramid", elevaion: 9983},
-  { name: "Tallac", elevaion: 9735},
-]
-
-function List({data, renderItem, renderEmpty}) {
-    return (!data.length ? (
-      renderEmpty
-      ) : (
-      <ul>{data.map( (item) => (
-      <li key={item.name}>
-        {renderItem(item)}
-      </li>
-      )
-    )}</ul>)
-    );
-}
-
-function App() {
-
+export function Home() {
   return (
-      <List
-      data={tahoe_peaks}
-      renderEmpty={<p>This list is empty</p>}
-      renderItem={
-        (item) => {
-          return (
-          <>
-          {item.name} - {item.elevaion} ft.
-          </>
-          )
-        }
-      }
-      />
+    <div>
+      <h1>
+        Home
+      </h1>
+    </div>
   )
 }
 
-export default App;
+export function About () {
+    return(
+      <div>
+        <h1>
+          About Us
+        </h1>
+      </div>
+    )
+}
+
+export function Contact() {
+  return (
+    <div>
+      <h1>
+        Contact Us
+      </h1>
+    </div>
+  )
+}
+
+export function App() {
+
+  return (
+    <Home />
+  )
+}
